@@ -143,3 +143,13 @@ export const products: Product[] = [
     variants:[{type:"Color",options:["Black","Platinum Silver"]}], createdAt:"2025-05-15"
   }
 ];
+
+export function getProduct(slug: string): Product | undefined {
+  return products.find((product) => product.slug === slug);
+}
+
+export function getRelated(product: Product): Product[] {
+  return products
+    .filter((item) => item.category === product.category && item.id !== product.id)
+    .slice(0, 4);
+}
