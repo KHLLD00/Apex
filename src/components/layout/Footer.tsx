@@ -1,7 +1,5 @@
 "use client";
 
-"use client";
-
 import Link from "next/link";
 import { categories } from "@/data/categories";
 
@@ -17,7 +15,6 @@ export function Footer() {
             Technology that fits your life — smartphones, audio, smart devices and more, delivered nationwide.
           </p>
           <form
-            
             className="mt-5 flex max-w-xs gap-2"
           >
             <input
