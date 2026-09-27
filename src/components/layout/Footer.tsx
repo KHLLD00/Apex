@@ -12,21 +12,12 @@ export function Footer() {
             Apex<span className="text-cyan-400">Gadgets</span>
           </span>
           <p className="mt-3 max-w-xs text-sm text-white/60">
-            Technology that fits your life — smartphones, audio, smart devices and more, delivered nationwide.
+            Current smartphones, audio, computing and everyday tech — presented with clear specifications and straightforward pricing.
           </p>
-          <form
-            className="mt-5 flex max-w-xs gap-2"
-          >
-            <input
-              type="email"
-              required
-              placeholder="Your email"
-              className="w-full rounded-lg border border-white/15 bg-white/5 px-3 py-2 text-sm text-white placeholder:text-white/40 outline-none focus:border-cyan-400"
-            />
-            <button className="shrink-0 rounded-lg bg-electric-500 px-4 py-2 text-sm font-medium hover:bg-electric-600 transition-colors">
-              Join
-            </button>
-          </form>
+          <div className="mt-5">
+            <p className="text-xs font-medium uppercase tracking-wide text-white/40">Stay updated</p>
+            <p className="mt-1 text-sm text-white/50">Follow the catalogue for new device listings and product updates.</p>
+          </div>
         </div>
 
         <div>
@@ -56,18 +47,11 @@ export function Footer() {
             <li><Link href="/privacy" className="hover:text-cyan-400 transition-colors">Privacy policy</Link></li>
             <li><Link href="/terms" className="hover:text-cyan-400 transition-colors">Terms &amp; conditions</Link></li>
           </ul>
-          <div className="mt-5 flex gap-3">
-            {["Instagram", "X", "Facebook"].map((s) => (
-              <a key={s} href="#" aria-label={s} className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-xs hover:bg-cyan-400 hover:text-navy-950 transition-colors">
-                {s[0]}
-              </a>
-            ))}
-          </div>
         </div>
       </div>
       <div className="border-t border-white/10 py-5">
         <p className="container-page text-xs text-white/40">
-          © {new Date().getFullYear()} Apex Gadgets. A fictional store built for demonstration purposes — not a real business.
+          © {new Date().getFullYear()} Apex Gadgets. Product availability and pricing may change without notice.
         </p>
       </div>
     </footer>
