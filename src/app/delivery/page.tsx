@@ -7,13 +7,13 @@ export default function DeliveryPage() {
   return (
     <ContentPage
       title="Delivery Information"
-      intro="How orders move from checkout to your door, wherever you are in Nigeria."
+      intro="Clear delivery expectations for customers ordering electronics in Nigeria."
       sections={[
-        { heading: "Delivery coverage", body: "We deliver to all 36 states and the FCT. Delivery timelines vary by location — major cities generally see faster delivery windows than more remote areas." },
-        { heading: "Standard delivery", body: "Standard delivery typically arrives within 2–5 business days from when your order is confirmed. This option is free on orders above ₦50,000." },
-        { heading: "Express delivery", body: "Express delivery is available in Lagos, Abuja and Port Harcourt, with orders typically arriving within 24–48 hours for a flat fee." },
-        { heading: "Order tracking", body: "You'll receive updates on your order status as it moves from processing to delivery. Your order confirmation page is the fastest way to check current status." },
-        { heading: "Delivery issues", body: "If a delivery is delayed or an item arrives damaged, contact support with your order number and we'll help sort it out." },
+        { heading: "Delivery coverage", body: "Delivery availability depends on the destination entered during checkout. We show the applicable delivery method and fee before an order is confirmed." },
+        { heading: "Delivery timing", body: "Estimated delivery times can vary by destination, courier availability and the item ordered. Your order confirmation contains the latest estimate for your order." },
+        { heading: "Order updates", body: "Keep your order number available when contacting support about delivery. Status updates are shown through the order flow where available." },
+        { heading: "Before accepting delivery", body: "Check the package for obvious external damage before accepting it. If an item arrives damaged, contact support as soon as possible and keep the packaging." },
+        { heading: "Important note", body: "Delivery estimates are not guarantees and may change during weekends, public holidays or periods of unusually high demand." },
       ]}
     />
   );
