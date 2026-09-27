@@ -8,27 +8,28 @@ export function Hero() {
       <div className="pointer-events-none absolute -right-40 top-0 h-[520px] w-[520px] rounded-full bg-electric-500/20 blur-[120px]" />
       <div className="container-page relative grid items-center gap-10 py-16 sm:py-20 lg:grid-cols-2 lg:py-28">
         <div>
+          <p className="mb-4 text-sm font-medium uppercase tracking-[0.18em] text-cyan-400">Current devices. Clear choices.</p>
           <h1 className="font-display text-4xl font-semibold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-6xl">
-            Technology that
+            Shop the tech
             <br />
-            fits your life.
+            you actually want.
           </h1>
           <p className="mt-5 max-w-md text-base text-white/60 sm:text-lg">
-            Smartphones, audio, smart devices and computing gear — sourced for quality, priced fairly, delivered nationwide.
+            Explore current iPhone, Galaxy, Pixel and other popular devices, plus audio, computing and everyday accessories.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Button size="lg" asChild>
-              <Link href="/shop">Shop Now</Link>
+              <Link href="/shop">Shop Devices</Link>
             </Button>
             <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/10" asChild>
-              <Link href="/shop?deal=true">Explore Deals</Link>
+              <Link href="/categories/smartphones">Browse Smartphones</Link>
             </Button>
           </div>
         </div>
         <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl2 lg:aspect-square">
           <Image
             src="https://images.unsplash.com/photo-1592286927505-1def25115558?q=80&w=1200"
-            alt="Latest smartphone from Apex Gadgets"
+            alt="Modern smartphone"
             fill
             priority
             sizes="(max-width: 1024px) 100vw, 50vw"
@@ -42,10 +43,10 @@ export function Hero() {
 
 export function TrustSection() {
   const items = [
-    { title: "Nationwide Delivery", desc: "We deliver to all 36 states and the FCT." },
-    { title: "Secure Checkout", desc: "Your information stays protected, every order." },
-    { title: "Quality Products", desc: "Every item is checked before it ships." },
-    { title: "Customer Support", desc: "Real people, ready to help by phone or chat." },
+    { title: "Current Models", desc: "Recognizable devices from major technology brands." },
+    { title: "Clear Specifications", desc: "Key storage, display, camera and connectivity details." },
+    { title: "Straightforward Shopping", desc: "Compare products before adding them to your cart." },
+    { title: "Nigeria-Focused", desc: "Delivery and checkout information designed for local orders." },
   ];
   return (
     <section className="border-y border-navy-900/10 bg-white">
