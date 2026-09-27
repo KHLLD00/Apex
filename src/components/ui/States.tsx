@@ -1,5 +1,4 @@
 import React from "react";
-import { Button } from "./Button";
 
 export function ProductCardSkeleton() {
   return (
@@ -42,15 +41,27 @@ export function EmptyState({
   );
 }
 
-export function ErrorState({ title = "Something went wrong", description, onRetry }: { title?: string; description?: string; onRetry?: () => void }) {
+export function ErrorState({
+  title = "Something went wrong",
+  description,
+  onRetry,
+}: {
+  title?: string;
+  description?: string;
+  onRetry?: () => void;
+}) {
   return (
     <div className="flex flex-col items-center justify-center gap-3 rounded-xl2 border border-red-200 bg-red-50 px-6 py-12 text-center">
       <h3 className="font-display text-lg font-semibold text-red-700">{title}</h3>
       {description && <p className="max-w-sm text-sm text-red-600/80">{description}</p>}
       {onRetry && (
-        <Button variant="outline" onClick={onRetry} className="border-red-300 text-red-700 hover:bg-red-100">
+        <button
+          type="button"
+          onClick={onRetry}
+          className="rounded-lg border border-red-300 px-5 py-2.5 text-sm font-medium text-red-700 transition-colors hover:bg-red-100"
+        >
           Try again
-        </Button>
+        </button>
       )}
     </div>
   );
