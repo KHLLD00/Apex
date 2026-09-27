@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "@/components/ui/Button";
 
 export function Hero() {
   return (
@@ -18,12 +17,18 @@ export function Hero() {
             Explore current iPhone, Galaxy, Pixel and other popular devices, plus audio, computing and everyday accessories.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Button size="lg" asChild>
-              <Link href="/shop">Shop Devices</Link>
-            </Button>
-            <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/10" asChild>
-              <Link href="/categories/smartphones">Browse Smartphones</Link>
-            </Button>
+            <Link
+              href="/shop"
+              className="inline-flex items-center justify-center gap-2 rounded-lg bg-electric-500 px-7 py-3.5 text-base font-medium text-white shadow-soft transition-all duration-150 hover:bg-electric-600 active:scale-[0.98]"
+            >
+              Shop Devices
+            </Link>
+            <Link
+              href="/categories/smartphones"
+              className="inline-flex items-center justify-center gap-2 rounded-lg border border-white/20 px-7 py-3.5 text-base font-medium text-white transition-all duration-150 hover:bg-white/10 active:scale-[0.98]"
+            >
+              Browse Smartphones
+            </Link>
           </div>
         </div>
         <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl2 lg:aspect-square">
