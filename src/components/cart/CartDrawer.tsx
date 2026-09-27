@@ -68,7 +68,11 @@ export function CartDrawer() {
             <EmptyState
               title="Your cart is empty"
               description="Browse the shop and add something you'll love."
-              action={<Button onClick={() => setOpen(false)} asChild><Link href="/shop">Continue shopping</Link></Button>}
+              action={
+                <Button asChild>
+                  <Link href="/shop" onClick={() => setOpen(false)}>Continue shopping</Link>
+                </Button>
+              }
             />
           </div>
         ) : (
@@ -151,8 +155,8 @@ export function CartDrawer() {
                 </div>
               </div>
 
-              <Button className="mt-4 w-full" size="lg" asChild onClick={() => setOpen(false)}>
-                <Link href="/checkout">Proceed to Checkout</Link>
+              <Button className="mt-4 w-full" size="lg" asChild>
+                <Link href="/checkout" onClick={() => setOpen(false)}>Proceed to Checkout</Link>
               </Button>
             </div>
           </>
