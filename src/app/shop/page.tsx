@@ -1,15 +1,17 @@
 import { Metadata } from "next";
 import { ProductExplorer } from "@/components/product/ProductExplorer";
 import { Breadcrumb } from "@/components/ui/Overlays";
-import { products } from "@/data/products";
+import { getCatalogProducts } from "@/lib/backend/catalog";
 
 export const metadata: Metadata = {
   title: "Shop All Products",
   description: "Browse the full Apex Gadgets catalog — smartphones, audio, smart devices, computing and electronics.",
 };
 
-export default function ShopPage({ searchParams }: { searchParams: { deal?: string } }) {
-  const list = searchParams.deal === "true" ? products.filter((p) => p.deal) : products;
+export default async function ShopPage({ searchParams }: { searchParams: { deal?: string } }) {
+  const products = await getCatalogProducts();
+  const list = searchParams.deal === "true" ? products.filter((p) => p.previousPrice) : products;
+
   return (
     <div className="container-page py-8 sm:py-12">
       <Breadcrumb items={[{ label: "Home", href: "/" }, { label: searchParams.deal === "true" ? "Deals" : "Shop" }]} />
@@ -17,13 +19,9 @@ export default function ShopPage({ searchParams }: { searchParams: { deal?: stri
         {searchParams.deal === "true" ? "Deals" : "Shop All Products"}
       </h1>
       <p className="mt-2 max-w-xl text-navy-900/60">
-        {searchParams.deal === "true"
-          ? "Limited-time price drops across the catalog."
-          : "Find the right device with search, filters and sorting built for real decisions."}
+        {searchParams.deal === "true" ? "Limited-time price drops across the catalog." : "Find the right device with search, filters and sorting built for real decisions."}
       </p>
-      <div className="mt-8">
-        <ProductExplorer products={list} />
-      </div>
+      <div className="mt-8"><ProductExplorer products={list} /></div>
     </div>
   );
 }
