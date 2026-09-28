@@ -1,14 +1,12 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Breadcrumb } from "@/components/ui/Overlays";
 import { ProductExplorer } from "@/components/product/ProductExplorer";
 import { getCatalogCategories, getCatalogProductsByCategory } from "@/lib/backend/catalog";
 import type { Category } from "@/types";
 
-export async function generateStaticParams() {
-  const categories = await getCatalogCategories();
-  return categories.map((c) => ({ slug: c.slug }));
-}
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const categories = await getCatalogCategories();
