@@ -114,10 +114,10 @@ export default function AdminPanel() {
     setMessage("Coupon updated.");
   }
 
-  async function updateOrder(id: string, field: "order_status"|"payment_status", value: string) {
+  async function updateOrder(id: string, value: string) {
     const r = await fetch("/api/admin/orders/"+id, {
       method:"PATCH", headers:{"Content-Type":"application/json"},
-      body: JSON.stringify({[field]:value})
+      body: JSON.stringify({order_status:value})
     });
     const d = await r.json();
     if (!r.ok) { setMessage(d.error ?? "Unable to update order."); return; }
@@ -199,8 +199,8 @@ export default function AdminPanel() {
             </div>
             <div className="mt-3 text-sm">{o.order_items.map((item,i)=><div key={i}>{item.quantity} × {item.product_name}{item.variant_name ? ` — ${item.variant_name}` : ""}</div>)}</div>
             <div className="mt-4 flex flex-wrap gap-3">
-              <label className="text-xs">Order status<select className={input} value={o.order_status} onChange={e=>updateOrder(o.id,"order_status",e.target.value)}><option>pending</option><option>processing</option><option>shipped</option><option>delivered</option><option>cancelled</option></select></label>
-              <label className="text-xs">Payment<select className={input} value={o.payment_status} onChange={e=>updateOrder(o.id,"payment_status",e.target.value)}><option>pending</option><option>paid</option><option>failed</option><option>refunded</option></select></label>
+              <label className="text-xs">Order status<select className={input} value={o.order_status} onChange={e=>updateOrder(o.id,e.target.value)}><option>pending</option><option>processing</option><option>shipped</option><option>delivered</option><option>cancelled</option></select></label>
+              <div className="text-xs"><span className="block opacity-60">Payment</span><span className="mt-1 block rounded-lg border px-3 py-2">{o.payment_status}</span></div>
             </div>
           </article>)}
           {!orders.length && <p className="rounded-2xl border p-6 text-sm opacity-60">No orders yet.</p>}
