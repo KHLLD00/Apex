@@ -16,7 +16,9 @@ export async function middleware(request: NextRequest) {
             options: CookieOptions;
           }>,
         ) {
-          cookiesToSet.forEach(({ name, value }) => request.cookies.set(name, value));
+          cookiesToSet.forEach(({ name, value }) =>
+            request.cookies.set(name, value),
+          );
           response = NextResponse.next({ request });
           cookiesToSet.forEach(({ name, value, options }) =>
             response.cookies.set(name, value, options),
@@ -26,7 +28,23 @@ export async function middleware(request: NextRequest) {
     },
   );
 
-  await supabase.auth.getUser();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  const isLoginPage = request.nextUrl.pathname === "/admin/login";
+  const isAdmin = user?.app_metadata?.role === "admin";
+
+  if (!user && !isLoginPage) {
+    return NextResponse.redirect(new URL("/admin/login", request.url));
+  }
+
+  if (user && !isAdmin && !isLoginPage) {
+    return NextResponse.redirect(
+      new URL("/admin/login?error=unauthorized", request.url),
+    );
+  }
+
   return response;
 }
 
