@@ -2,6 +2,7 @@
 
 import { FormEvent, useEffect, useState } from "react";
 import { formatNaira } from "@/lib/utils";
+import ProductImages from "@/components/admin/ProductImages";
 
 type Product = {
   id: string; name: string; brand: string; slug: string; sku: string;
@@ -176,7 +177,7 @@ export default function AdminPanel() {
             <table className="w-full min-w-[850px] text-sm">
               <thead><tr className="border-b text-left"><th className="p-3">Product</th><th>Price</th><th>Stock</th><th>Flags</th><th>Active</th></tr></thead>
               <tbody>{products.map(p=><tr key={p.id} className="border-b last:border-0">
-                <td className="p-3"><div className="font-medium">{p.name}</div><div className="text-xs opacity-60">{p.sku}</div></td>
+                <td className="p-3"><div className="font-medium">{p.name}</div><div className="text-xs opacity-60">{p.sku}</div><ProductImages productId={p.id}/></td>
                 <td>{formatNaira(Number(p.sale_price ?? p.price))}</td>
                 <td><input className="w-20 rounded border px-2 py-1" type="number" min="0" value={p.stock_quantity} onChange={e=>updateProduct(p.id,{stock_quantity:Number(e.target.value)})}/></td>
                 <td className="space-x-2">
