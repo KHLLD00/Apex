@@ -2,44 +2,54 @@ import Image from "next/image";
 import Link from "next/link";
 
 export function Hero({ imageUrl }: { imageUrl?: string | null }) {
+  const background = imageUrl || "https://images.unsplash.com/photo-1592286927505-1def25115558?q=80&w=1800";
+
   return (
-    <section className="relative overflow-hidden bg-navy-950">
+    <section className="relative isolate min-h-[620px] overflow-hidden bg-navy-950">
+      <Image
+        src={background}
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover object-center"
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-navy-950 via-navy-950/90 to-navy-950/25" />
+      <div className="absolute inset-0 bg-gradient-to-t from-navy-950/70 via-transparent to-navy-950/10" />
       <div className="pointer-events-none absolute -right-40 top-0 h-[520px] w-[520px] rounded-full bg-electric-500/20 blur-[120px]" />
-      <div className="container-page relative grid items-center gap-10 py-16 sm:py-20 lg:grid-cols-2 lg:py-28">
-        <div>
-          <p className="mb-4 text-sm font-medium uppercase tracking-[0.18em] text-cyan-400">Current devices. Clear choices.</p>
-          <h1 className="font-display text-4xl font-semibold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-6xl">
-            Shop the tech
-            <br />
-            you actually want.
+
+      <div className="container-page relative flex min-h-[620px] items-center py-16 sm:py-20 lg:py-24">
+        <div className="max-w-2xl">
+          <span className="inline-flex rounded-full border border-white/15 bg-white/10 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-cyan-300 backdrop-blur-sm">
+            New arrivals
+          </span>
+
+          <h1 className="mt-5 max-w-xl font-display text-5xl font-semibold leading-[1.02] tracking-tight text-white sm:text-6xl lg:text-7xl">
+            Upgrade Your Everyday
           </h1>
-          <p className="mt-5 max-w-md text-base text-white/60 sm:text-lg">
-            Explore current iPhone, Galaxy, Pixel and other popular devices, plus audio, computing and everyday accessories.
+
+          <p className="mt-5 max-w-lg text-base leading-7 text-white/70 sm:text-lg">
+            Premium tech. Real value. Delivered across Nigeria.
           </p>
+
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
               href="/shop"
-              className="inline-flex items-center justify-center gap-2 rounded-lg bg-electric-500 px-7 py-3.5 text-base font-medium text-white shadow-soft transition-all duration-150 hover:bg-electric-600 active:scale-[0.98]"
+              className="inline-flex items-center justify-center rounded-lg bg-electric-500 px-7 py-3.5 text-base font-medium text-white shadow-soft transition-all duration-150 hover:bg-electric-600 active:scale-[0.98]"
             >
-              Shop Devices
+              Shop New Arrivals
             </Link>
             <Link
-              href="/categories/smartphones"
-              className="inline-flex items-center justify-center gap-2 rounded-lg border border-white/20 px-7 py-3.5 text-base font-medium text-white transition-all duration-150 hover:bg-white/10 active:scale-[0.98]"
+              href="/shop?sort=sale"
+              className="inline-flex items-center justify-center rounded-lg border border-white/20 bg-white/5 px-7 py-3.5 text-base font-medium text-white backdrop-blur-sm transition-all duration-150 hover:bg-white/10 active:scale-[0.98]"
             >
-              Browse Smartphones
+              Explore Deals
             </Link>
           </div>
-        </div>
-        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl2 lg:aspect-square">
-          <Image
-            src={imageUrl || "https://images.unsplash.com/photo-1592286927505-1def25115558?q=80&w=1200"}
-            alt="Modern smartphone"
-            fill
-            priority
-            sizes="(max-width: 1024px) 100vw, 50vw"
-            className="object-cover"
-          />
+
+          <p className="mt-6 text-xs font-medium tracking-wide text-white/50">
+            Fast delivery <span className="mx-2">•</span> Secure checkout <span className="mx-2">•</span> ₦ pricing
+          </p>
         </div>
       </div>
     </section>
