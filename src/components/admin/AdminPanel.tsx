@@ -3,6 +3,7 @@
 import { FormEvent, useEffect, useState } from "react";
 import { formatNaira } from "@/lib/utils";
 import ProductImages from "@/components/admin/ProductImages";
+import SiteImages from "@/components/admin/SiteImages";
 
 type Product = {
   id: string; name: string; brand: string; slug: string; sku: string;
@@ -158,6 +159,7 @@ export default function AdminPanel() {
 
       {tab==="products" && (
         <section className="space-y-6">
+          <SiteImages />
           <form onSubmit={createProduct} className="grid gap-4 rounded-2xl border p-5 md:grid-cols-2">
             <h2 className="md:col-span-2 font-semibold">Add product</h2>
             {[
