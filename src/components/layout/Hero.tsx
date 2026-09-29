@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export function Hero() {
+export function Hero({ imageUrl }: { imageUrl?: string | null }) {
   return (
     <section className="relative overflow-hidden bg-navy-950">
       <div className="pointer-events-none absolute -right-40 top-0 h-[520px] w-[520px] rounded-full bg-electric-500/20 blur-[120px]" />
@@ -33,7 +33,7 @@ export function Hero() {
         </div>
         <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl2 lg:aspect-square">
           <Image
-            src="https://images.unsplash.com/photo-1592286927505-1def25115558?q=80&w=1200"
+            src={imageUrl || "https://images.unsplash.com/photo-1592286927505-1def25115558?q=80&w=1200"}
             alt="Modern smartphone"
             fill
             priority
