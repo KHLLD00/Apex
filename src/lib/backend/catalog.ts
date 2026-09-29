@@ -129,6 +129,13 @@ export async function getCatalogProducts(): Promise<Product[]> {
   return (data ?? []).map((row) => mapProduct(row as ProductRow));
 }
 
+export async function getHeroImage(): Promise<string | null> {
+  const supabase = await createClient();
+  const { data, error } = await supabase.from("site_settings").select("hero_image_url").eq("id", true).maybeSingle();
+  if (error) return null;
+  return data?.hero_image_url ?? null;
+}
+
 export async function getCatalogCategories() {
   const supabase = await createClient();
   const { data, error } = await supabase
